@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
 
 class PostDetail extends Component {
     render() {
+        const { post } = this.props;
         return (
             <div className='col s12 m6'>
                <div className='card'>
                    <div className='card-content'>
-                    <span className='card-title'>Post One</span>
-                    <p>Lorem ipsum dolor, sit amet consecteur adipisicing elit. fugiat corrupti ab itaque.</p>
+                    <span className='card-title'>{post.title}</span>
+                    <p>{post.content}</p>
                    </div>
                    <div className='card-action'>
                         <button className='btn red'>Delete</button>
@@ -18,4 +20,12 @@ class PostDetail extends Component {
     }
 }
 
-export default PostDetail
+    const mapDispatchToProps = (dispatch) => {
+        return {
+            deletePost: (id) => {
+                dispatch({ type: 'DELETE_POST', id })
+            }
+        }
+    }
+
+export default connect()(PostDetail);
