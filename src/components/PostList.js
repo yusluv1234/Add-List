@@ -1,25 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PostDetail from './PostDetail'
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
  
-class AddList extends Component {
-    render() {
-        const { posts } = this.props;
+const AddList = () => {
+        const { posts } = useSelector(state => state)
         return (
             <div className='container'>
                <div className='row'>
-                    { posts && posts.map(post => <PostDetail post={post} key={post.id} /> ) }
+                    { posts && posts.map((post) => <PostDetail post={post} key={post.id} /> ) }
                </div>
             </div>
         )
     }
-}
 
-const mapStateToProps = (state) => {
-    return {
-        posts: state.posts,
-    }
-}
-
-export default  connect(mapStateToProps)(AddList);
+export default AddList;
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import { deletePost } from '../store/actions/postAction';
 
 class PostDetail extends Component {
     render() {
@@ -12,7 +13,7 @@ class PostDetail extends Component {
                     <p>{post.content}</p>
                    </div>
                    <div className='card-action'>
-                        <button className='btn red'>Delete</button>
+                        <button onClick={() => this.props.deletePost(post.id)} className='btn red'>Delete</button>
                    </div>
                </div>
             </div>
@@ -23,9 +24,9 @@ class PostDetail extends Component {
     const mapDispatchToProps = (dispatch) => {
         return {
             deletePost: (id) => {
-                dispatch({ type: 'DELETE_POST', id })
-            }
-        }
-    }
+                dispatch(deletePost(id));
+            },
+        };
+    };
 
-export default connect()(PostDetail);
+export default connect(mapDispatchToProps)(PostDetail);
