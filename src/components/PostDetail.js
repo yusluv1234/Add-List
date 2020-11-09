@@ -1,10 +1,9 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux';
+import React from 'react'
+import { useDispatch } from 'react-redux';
 import { deletePost } from '../store/actions/postAction';
 
-class PostDetail extends Component {
-    render() {
-        const { post } = this.props;
+const PostDetail = ({post}) => {       
+     const dispatch = useDispatch();
         return (
             <div className='col s12 m6'>
                <div className='card'>
@@ -13,20 +12,20 @@ class PostDetail extends Component {
                     <p>{post.content}</p>
                    </div>
                    <div className='card-action'>
-                        <button onClick={() => this.props.deletePost(post.id)} className='btn red'>Delete</button>
+                        <button onClick={() => dispatch(deletePost(post.id))} className='btn red'>Delete</button>
                    </div>
                </div>
             </div>
         )
-    }
 }
+    export default PostDetail;
 
-    const mapDispatchToProps = (dispatch) => {
-        return {
-            deletePost: (id) => {
-                dispatch(deletePost(id));
-            },
-        };
-    };
+//     const mapDispatchToProps = (dispatch) => {
+//         return {
+//             deletePost: (id) => {
+//                 dispatch(deletePost(id));
+//             },
+//         };
+//     };
 
-export default connect(mapDispatchToProps)(PostDetail);
+// export default connect(mapDispatchToProps)(PostDetail);

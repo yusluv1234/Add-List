@@ -1,5 +1,5 @@
 import React from 'react'
-import PostDetail from './PostDetail'
+import PostDetail from './PostDetail';
 import { useSelector } from 'react-redux';
  
 const AddList = () => {
