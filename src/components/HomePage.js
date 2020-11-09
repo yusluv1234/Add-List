@@ -1,11 +1,11 @@
 import React from 'react'
-import Addpost from './AddPost'
+import AddPost from './AddPost'
 import PostList from './PostList'
 
 function HomePage() {
     return (
         <div>
-            <Addpost />
+            <AddPost />
             <PostList />
         </div>
     )
